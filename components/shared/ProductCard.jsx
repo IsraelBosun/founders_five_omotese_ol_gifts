@@ -30,7 +30,7 @@ export default function ProductCard({ product, showImage = true }) {
   const badgeStyle = product.badge ? (badgeBgMap[product.badge] || "bg-ol-text text-white") : null;
 
   return (
-    <Link href={`/shop/${product.slug}`} className="group block">
+    <Link href={`/shop/${product.slug}`} className="group block active:scale-[0.97] transition-transform duration-100">
       {/* Card visual */}
       <div className={`relative ${bg} rounded-2xl overflow-hidden aspect-[3/4] mb-4`}>
         {/* Badge */}

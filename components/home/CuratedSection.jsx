@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { products } from "@/lib/data";
 import ProductCard from "@/components/shared/ProductCard";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const tabs = ["All", "For him", "For her", "Event", "Corporate"];
 
@@ -53,8 +54,10 @@ export default function CuratedSection() {
 
         {filtered.length > 0 ? (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            {filtered.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {filtered.map((product, i) => (
+              <ScrollReveal key={product.id} delay={i * 75} variant="scale">
+                <ProductCard product={product} />
+              </ScrollReveal>
             ))}
           </div>
         ) : (

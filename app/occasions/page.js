@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { occasions } from "@/lib/data";
 
 export const metadata = {
@@ -27,20 +28,30 @@ export default function OccasionsPage() {
 
       {/* Occasions grid */}
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-14 lg:py-20">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
           {occasions.map((occasion) => (
             <Link
               key={occasion.slug}
               href={`/occasions/${occasion.slug}`}
-              className="group rounded-2xl bg-white border border-cream-dark p-6 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/5 transition-all duration-300"
+              className="group block relative rounded-2xl overflow-hidden aspect-[3/4] bg-cream-dark"
             >
-              <div className="text-3xl mb-4">{occasion.icon}</div>
-              <h2 className="font-serif font-semibold text-[18px] text-ol-text group-hover:text-purple-card transition-colors leading-snug mb-1">
-                {occasion.name}
-              </h2>
-              <p className="text-[12px] text-ol-text/40">{occasion.count} items</p>
-              <div className="mt-4 flex items-center gap-1 text-gold/0 group-hover:text-gold text-[12px] font-medium transition-all">
-                Browse →
+              <Image
+                src={occasion.image}
+                alt={occasion.name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-purple-deep/0 group-hover:bg-purple-deep/25 transition-colors duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
+                <h2 className="font-serif font-semibold text-white text-[15px] lg:text-[17px] leading-snug">
+                  {occasion.name}
+                </h2>
+                <p className="text-[11px] text-white/55 mt-1">{occasion.count} items</p>
+                <div className="mt-2 flex items-center gap-1 text-gold text-[11px] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-1 group-hover:translate-x-0 transition-transform">
+                  Browse →
+                </div>
               </div>
             </Link>
           ))}

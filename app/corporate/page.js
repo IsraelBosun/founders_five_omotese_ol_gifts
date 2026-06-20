@@ -9,35 +9,46 @@ export const metadata = {
 
 const corporateServices = [
   {
-    icon: "🏢",
     title: "Branded Gift Sets",
     description: "Company-branded hampers and sets for clients, partners, and stakeholders.",
+    image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&q=80&fit=crop&auto=format",
   },
   {
-    icon: "👤",
     title: "Employee Appreciation",
     description: "Recognise and reward your team with thoughtful, personalised gifts.",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80&fit=crop&auto=format",
   },
   {
-    icon: "🤝",
     title: "Client Gifting",
     description: "Leave a lasting impression with premium gifts for your valued clients.",
+    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80&fit=crop&auto=format",
   },
   {
-    icon: "📢",
     title: "Promotional Merchandise",
     description: "Custom branded items that keep your company top of mind.",
+    image: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=600&q=80&fit=crop&auto=format",
   },
   {
-    icon: "📋",
     title: "Conference Souvenirs",
     description: "Professional branded souvenirs for events, seminars, and conferences.",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop&auto=format",
   },
   {
-    icon: "✨",
     title: "Company-Branded Items",
     description: "From stationery to lifestyle products — all bearing your brand.",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80&fit=crop&auto=format",
   },
+];
+
+const galleryImages = [
+  { src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80&fit=crop&auto=format", alt: "Corporate team" },
+  { src: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&q=80&fit=crop&auto=format", alt: "Gift hamper" },
+  { src: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80&fit=crop&auto=format", alt: "Branded items" },
+  { src: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=500&q=80&fit=crop&auto=format", alt: "Business meeting" },
+  { src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&q=80&fit=crop&auto=format", alt: "Premium gift box" },
+  { src: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=500&q=80&fit=crop&auto=format", alt: "Corporate desk" },
+  { src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&q=80&fit=crop&auto=format", alt: "Branded merchandise" },
+  { src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&q=80&fit=crop&auto=format", alt: "Premium stationery" },
 ];
 
 export default function CorporatePage() {
@@ -79,13 +90,12 @@ export default function CorporatePage() {
             </div>
           </div>
         </div>
-        {/* Decorative large text */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 font-serif font-black text-[300px] text-white/[0.03] leading-none select-none pointer-events-none">
           C
         </div>
       </div>
 
-      {/* Services grid */}
+      {/* Services grid — image cards */}
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
         <div className="text-center mb-14">
           <p className="text-[11px] tracking-[0.2em] text-gold font-medium uppercase mb-3">What we offer</p>
@@ -94,28 +104,41 @@ export default function CorporatePage() {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {corporateServices.map((service) => (
-            <div key={service.title} className="bg-white rounded-2xl p-7 border border-cream-dark hover:border-gold/30 hover:shadow-md transition-all">
-              <div className="text-3xl mb-4">{service.icon}</div>
-              <h3 className="font-serif font-semibold text-[18px] text-ol-text mb-2">{service.title}</h3>
-              <p className="text-[13px] text-ol-text/50 leading-relaxed">{service.description}</p>
+            <div key={service.title} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-cream-dark">
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
+                <h3 className="font-serif font-semibold text-white text-[17px] lg:text-[19px] leading-snug mb-1">
+                  {service.title}
+                </h3>
+                <p className="text-[12px] text-white/60 leading-relaxed">{service.description}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Product gallery */}
+      {/* Gallery */}
       <div className="bg-white py-16 lg:py-20">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <h2 className="font-serif font-bold text-[26px] lg:text-[34px] text-ol-text mb-8">Our corporate work</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="relative aspect-square rounded-xl overflow-hidden bg-cream-dark">
-                <img
-                  src={`/images/products/product_4_photo_${i}.jpeg`}
-                  alt={`Corporate gift ${i}`}
-                  className="object-cover w-full h-full"
+            {galleryImages.map((img, i) => (
+              <div key={i} className="group relative aspect-square rounded-xl overflow-hidden bg-cream-dark">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
               </div>
             ))}

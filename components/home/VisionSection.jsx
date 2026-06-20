@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { coreValues } from "@/lib/data";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 
 export default function VisionSection() {
   return (
@@ -7,7 +8,7 @@ export default function VisionSection() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-[1fr_420px] gap-12 lg:gap-20 items-start">
           {/* Left — vision statement */}
-          <div>
+          <ScrollReveal>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-6 h-[1px] bg-gold/50" />
               <p className="text-[10px] tracking-[0.25em] text-gold/70 font-medium uppercase">Our Vision</p>
@@ -40,21 +41,20 @@ export default function VisionSection() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
-          </div>
+          </ScrollReveal>
 
           {/* Right — core values grid */}
           <div className="grid grid-cols-2 gap-4">
             {coreValues.map((value, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-white/10 p-5 lg:p-6 hover:border-gold/30 hover:bg-white/5 transition-all"
-              >
-                <p className="font-serif italic text-gold/60 text-[13px] mb-3">{value.roman}</p>
-                <h3 className="font-serif font-semibold text-white text-[15px] leading-snug mb-2">
-                  {value.name}
-                </h3>
-                <p className="text-[12px] text-white/40 leading-snug">{value.description}</p>
-              </div>
+              <ScrollReveal key={i} delay={100 + i * 80} variant="scale">
+                <div className="h-full rounded-2xl border border-white/10 p-5 lg:p-6 hover:border-gold/30 hover:bg-white/5 transition-all">
+                  <p className="font-serif italic text-gold/60 text-[13px] mb-3">{value.roman}</p>
+                  <h3 className="font-serif font-semibold text-white text-[15px] leading-snug mb-2">
+                    {value.name}
+                  </h3>
+                  <p className="text-[12px] text-white/40 leading-snug">{value.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
