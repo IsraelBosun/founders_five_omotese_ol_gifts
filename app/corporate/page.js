@@ -40,16 +40,10 @@ const corporateServices = [
   },
 ];
 
-const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80&fit=crop&auto=format", alt: "Corporate team" },
-  { src: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&q=80&fit=crop&auto=format", alt: "Gift hamper" },
-  { src: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80&fit=crop&auto=format", alt: "Branded items" },
-  { src: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=500&q=80&fit=crop&auto=format", alt: "Business meeting" },
-  { src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&q=80&fit=crop&auto=format", alt: "Premium gift box" },
-  { src: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=500&q=80&fit=crop&auto=format", alt: "Corporate desk" },
-  { src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&q=80&fit=crop&auto=format", alt: "Branded merchandise" },
-  { src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&q=80&fit=crop&auto=format", alt: "Premium stationery" },
-];
+const galleryImages = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => ({
+  src: `/images/products/product_4_photo_${i}.jpeg`,
+  alt: `Corporate gift work ${i}`,
+}));
 
 export default function CorporatePage() {
   const whatsappMsg = encodeURIComponent("Hi O'L Gifts! I'd like to inquire about corporate gifting solutions for my company. Please share more details.");
