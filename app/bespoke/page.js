@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { socialLinks, coreValues } from "@/lib/data";
+import { socialLinks } from "@/lib/data";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 
 export const metadata = {
   title: "Bespoke Consultation — O'L Gifts & Souvenirs",
@@ -38,7 +39,7 @@ export default function BespokePage() {
       <div className="bg-white border-b border-cream-dark py-16 lg:py-24">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <ScrollReveal>
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-[1px] bg-gold" />
                 <p className="text-[11px] tracking-[0.2em] text-gold font-medium uppercase">Bespoke service</p>
@@ -51,7 +52,6 @@ export default function BespokePage() {
               <p className="text-[15px] text-ol-text/60 leading-relaxed mb-8 max-w-md">
                 Have a vision but need help bringing it to life? Our bespoke consultation service pairs you with a dedicated gifting advisor who listens, designs, and executes to perfection.
               </p>
-
               <div className="flex flex-wrap gap-3">
                 <a
                   href={`${socialLinks.whatsapp}?text=${whatsappMsg}`}
@@ -65,74 +65,78 @@ export default function BespokePage() {
                   Start on WhatsApp — it&apos;s free
                 </a>
               </div>
-
               <p className="text-[12px] text-ol-text/40 mt-4">
                 ✦ Consultation is always free · No commitment required
               </p>
-            </div>
+            </ScrollReveal>
 
-            {/* Right — visual */}
-            <div className="relative h-[380px] lg:h-[480px] rounded-3xl overflow-hidden bg-purple-card hidden lg:block">
-              <img
-                src="/images/products/product_5_photo_1.jpeg"
-                alt="Bespoke gifting"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-deep/80 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <p className="font-serif italic text-white/70 text-[15px] leading-relaxed">
-                  &ldquo;Every brief is reimagined from scratch.&rdquo;
-                </p>
-                <p className="text-[12px] text-gold/70 mt-2">— O&apos;L Gifting Team</p>
+            <ScrollReveal delay={150} variant="scale" className="hidden lg:block">
+              <div className="relative h-[480px] rounded-3xl overflow-hidden bg-purple-card">
+                <img
+                  src="/images/products/product_5_photo_1.jpeg"
+                  alt="Bespoke gifting"
+                  className="object-cover w-full h-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-deep/80 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <p className="font-serif italic text-white/70 text-[15px] leading-relaxed">
+                    &ldquo;Every brief is reimagined from scratch.&rdquo;
+                  </p>
+                  <p className="text-[12px] text-gold/70 mt-2">— O&apos;L Gifting Team</p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>
 
       {/* How it works */}
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
-        <div className="text-center mb-14">
+        <ScrollReveal className="text-center mb-14" variant="fade">
           <p className="text-[11px] tracking-[0.2em] text-gold font-medium uppercase mb-3">The process</p>
           <h2 className="font-serif font-bold text-[28px] lg:text-[38px] text-ol-text">How it works</h2>
-        </div>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, i) => (
-            <div key={i} className="relative">
-              {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-6 left-full w-full h-[1px] bg-cream-dark z-0" />
-              )}
-              <div className="relative z-10">
-                <div className="font-serif font-bold text-[36px] text-gold/30 leading-none mb-4">{step.number}</div>
-                <h3 className="font-serif font-semibold text-[17px] text-ol-text mb-2">{step.title}</h3>
-                <p className="text-[13px] text-ol-text/50 leading-relaxed">{step.description}</p>
+            <ScrollReveal key={i} delay={i * 100}>
+              <div className="relative">
+                {i < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-6 left-full w-full h-[1px] bg-cream-dark z-0" />
+                )}
+                <div className="relative z-10">
+                  <div className="font-serif font-bold text-[36px] text-gold/30 leading-none mb-4">{step.number}</div>
+                  <h3 className="font-serif font-semibold text-[17px] text-ol-text mb-2">{step.title}</h3>
+                  <p className="text-[13px] text-ol-text/50 leading-relaxed">{step.description}</p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
 
       {/* Pricing */}
-      <div className="bg-purple-deep py-16 lg:py-20">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 text-center">
-          <p className="text-[11px] tracking-[0.2em] text-gold/70 font-medium uppercase mb-4">Transparent pricing</p>
-          <h2 className="font-serif font-bold text-[28px] lg:text-[38px] text-white mb-8">
-            Bespoke starts from ₦3,000
-          </h2>
-          <p className="text-[14px] text-white/50 max-w-md mx-auto mb-8">
-            The initial consultation is always free. Custom gift creation starts from ₦3,000 — the exact price depends on your requirements.
-          </p>
-          <a
-            href={`${socialLinks.whatsapp}?text=${whatsappMsg}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-white text-[13px] font-medium rounded-full hover:bg-gold-light transition-colors"
-          >
-            Book free consultation
-          </a>
+      <ScrollReveal>
+        <div className="bg-purple-deep py-16 lg:py-20">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-12 text-center">
+            <p className="text-[11px] tracking-[0.2em] text-gold/70 font-medium uppercase mb-4">Transparent pricing</p>
+            <h2 className="font-serif font-bold text-[28px] lg:text-[38px] text-white mb-8">
+              Bespoke starts from ₦3,000
+            </h2>
+            <p className="text-[14px] text-white/50 max-w-md mx-auto mb-8">
+              The initial consultation is always free. Custom gift creation starts from ₦3,000 — the exact price depends on your requirements.
+            </p>
+            <a
+              href={`${socialLinks.whatsapp}?text=${whatsappMsg}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-white text-[13px] font-medium rounded-full hover:bg-gold-light transition-colors"
+            >
+              Book free consultation
+            </a>
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
     </div>
   );
 }

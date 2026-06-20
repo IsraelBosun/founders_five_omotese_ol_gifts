@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { socialLinks } from "@/lib/data";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 
 export const metadata = {
   title: "Corporate Gifts — O'L Gifts & Souvenirs",
@@ -99,8 +100,9 @@ export default function CorporatePage() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {corporateServices.map((service) => (
-            <div key={service.title} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-cream-dark">
+          {corporateServices.map((service, i) => (
+            <ScrollReveal key={service.title} delay={i * 80} variant="scale">
+            <div className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-cream-dark">
               <Image
                 src={service.image}
                 alt={service.title}
@@ -116,6 +118,7 @@ export default function CorporatePage() {
                 <p className="text-[12px] text-white/60 leading-relaxed">{service.description}</p>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -126,7 +129,8 @@ export default function CorporatePage() {
           <h2 className="font-serif font-bold text-[26px] lg:text-[34px] text-ol-text mb-8">Our corporate work</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((img, i) => (
-              <div key={i} className="group relative aspect-square rounded-xl overflow-hidden bg-cream-dark">
+              <ScrollReveal key={i} delay={i * 50} variant="scale">
+              <div className="group relative aspect-square rounded-xl overflow-hidden bg-cream-dark">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -135,6 +139,7 @@ export default function CorporatePage() {
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

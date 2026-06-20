@@ -4,6 +4,7 @@ import ProductGallery from "@/components/shop/ProductGallery";
 import ProductActions from "@/components/shop/ProductActions";
 import Link from "next/link";
 import ProductCard from "@/components/shared/ProductCard";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 
 export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -47,7 +48,7 @@ export default async function ProductPage({ params }) {
           <ProductGallery images={product.images} name={product.name} />
 
           {/* Details */}
-          <div>
+          <ScrollReveal delay={100}>
             <p className="text-[11px] tracking-[0.18em] text-gold font-medium uppercase mb-3">
               {product.categoryTag}
             </p>
@@ -114,18 +115,22 @@ export default async function ProductPage({ params }) {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Gallery grid — more images */}
         {product.images.length > 1 && (
           <div className="mt-16 lg:mt-24">
-            <h2 className="font-serif font-semibold text-[22px] text-ol-text mb-6">More from this collection</h2>
+            <ScrollReveal variant="fade">
+              <h2 className="font-serif font-semibold text-[22px] text-ol-text mb-6">More from this collection</h2>
+            </ScrollReveal>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
               {product.images.slice(1, 6).map((img, i) => (
-                <div key={i} className="relative aspect-square rounded-xl overflow-hidden bg-cream-dark">
-                  <img src={img} alt={`${product.name} ${i + 2}`} className="object-cover w-full h-full" />
-                </div>
+                <ScrollReveal key={i} delay={i * 60} variant="scale">
+                  <div className="relative aspect-square rounded-xl overflow-hidden bg-cream-dark">
+                    <img src={img} alt={`${product.name} ${i + 2}`} className="object-cover w-full h-full" />
+                  </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -133,15 +138,17 @@ export default async function ProductPage({ params }) {
 
         {/* Related products */}
         <div className="mt-16 lg:mt-24">
-          <div className="flex items-end justify-between mb-8">
+          <ScrollReveal variant="fade" className="flex items-end justify-between mb-8">
             <h2 className="font-serif font-bold text-[24px] lg:text-[32px] text-ol-text">You may also love</h2>
             <Link href="/shop" className="text-[12px] text-gold font-medium tracking-wider uppercase hover:text-gold-light">
               View all
             </Link>
-          </div>
+          </ScrollReveal>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            {related.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {related.map((p, i) => (
+              <ScrollReveal key={p.id} delay={i * 75} variant="scale">
+                <ProductCard product={p} />
+              </ScrollReveal>
             ))}
           </div>
         </div>
