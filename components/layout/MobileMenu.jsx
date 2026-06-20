@@ -31,10 +31,10 @@ export default function MobileMenu({ open, onClose }) {
         }`}
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-cream-dark">
-          <div className="flex flex-col leading-none">
+          <Link href="/" onClick={onClose} className="flex flex-col leading-none">
             <span className="font-serif font-bold text-xl text-ol-text italic">O&apos;L</span>
             <span className="text-[9px] tracking-[0.2em] text-gold font-sans font-medium uppercase">Gifts & Souvenirs</span>
-          </div>
+          </Link>
           <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-cream" aria-label="Close menu">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path d="M18 6L6 18M6 6l12 12" />
