@@ -16,7 +16,7 @@ export default function WhatsAppButton() {
       href={socialLinks.whatsapp}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-6 right-5 lg:right-8 z-50 flex items-center gap-2.5 bg-[#25D366] text-white text-[13px] font-medium px-4 py-3 rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-105 active:scale-95 transition-all duration-300 ${
+      className={`fixed bottom-24 lg:bottom-8 right-5 lg:right-8 z-50 flex items-center gap-2.5 bg-[#25D366] text-white text-[13px] font-medium px-4 py-3 rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-105 active:scale-95 transition-all duration-300 ${
         visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       }`}
       aria-label="Chat on WhatsApp"
